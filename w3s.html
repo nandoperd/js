@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS W3S</title>
+</head>
+<body>
+    <!-- konten HTML -->
+    <p id="klik">hola</p>
+    <button onclick='document.getElementById("klik").innerHTML = "halo"'>klik</button>
+    <br>
+
+    <!-- gambar -->
+    <button onclick='document.getElementById("lampu").src="W3s/off.gif"'>Mati</button>    
+    <img id="lampu" src="w3s/off.gif" alt="lampu">
+    <button onclick='document.getElementById("lampu").src="W3s/on.gif"'>Nyala</button>
+    <br>
+
+    <!-- css -->
+    <p id="gede">Tulisan</p>
+    <button onclick='document.getElementById("gede").style.fontSize = "35px"'>Gedein</button>
+
+    <!-- alert -->
+    <script>
+        // window.alert("Lu ganteng!");
+        alert("Lu ganteng!"); // bisa juga alert aja
+    </script>
+
+    <!-- print -->
+    <script>
+        window.print("print");
+    </script>
+
+
+
+
+</body>
+</html>

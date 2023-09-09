@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- link w3s -->
+    <div id="w3s"></div>
+    <script>
+        var link = document.createElement('a');
+
+        link.href = 'w3s.html';
+        link.textContent = 'W3S';
+        link.target = '_blank';
+
+        var w3s = document.getElementById('w3s');
+        w3s.appendChild(link);
+    </script>
+
+    <script>
+        document.writeln("Hello World <br>");
+    </script>
+
+    <script>
+        // di js, hanya ada 1 tipe data number, bisa bilangan bulat/desimal
+        document.writeln("Tipe data number (bulat dan desimal) <br>");
+        document.writeln(100);
+        document.writeln("</br>");
+        document.writeln(7.9);
+        document.writeln("</br>");
+    </script>
+
+    <script>
+        // number notation
+        // js mendukung Binary, Hexadecimal, dan Octal. penulisannya :
+        // Binary : 0b10101
+        document.writeln("Number notation (Binary, Hexadecimal, Octal) <br>");
+        document.writeln(0b011111100000);
+        document.writeln("</br>");
+        // Hexa : 0xFF
+        document.writeln(0xFF);
+        document.writeln("</br>");
+        // Octal : 0o10
+        document.writeln(0o111);
+        document.writeln("</br>");
+    </script>
+
+    <script>
+        // boolean
+        document.writeln("Boolean <br>");
+        document.writeln("true");
+        document.writeln("</br>");
+        document.writeln("false");
+        document.writeln("</br>");
+    </script>
+
+    <script>
+        // string
+        document.writeln("String <br>");
+        document.writeln(""); // kosong juga string
+        document.writeln("<br>");
+        document.writeln("nandoperd <br>"); // kosong juga string
+        
+        // menambah string
+        document.writeln("Nama : " + "nandoperd");
+        document.writeln("<br>");
+    </script>
+
+    <script>
+        // escape sequence
+        document.writeln("Escape Sequence <br>");
+        document.writeln("<textarea col=100 row=10>");
+            document.writeln("nandoperd \n Full Stack Developer"); // enter
+            document.writeln("nandoperd \t Full Stack Developer"); // tab
+            document.writeln("\'nandoperd\'"); // ''
+            document.writeln("\"Full Stack Developer \""); // ""
+            document.writeln("\\Programmer"); // \
+        document.writeln("</textarea>");
+        document.writeln("</br>");
+    </script>
+
+    <script>
+        // variable (cara lama yang tidak disarankan)
+        var namaDepan;
+        var namaBelakang;
+
+        namaDepan = "nandoperd";
+        namaBelakang = "putra";
+
+        // variable + value
+        var namaLengkap = "Elbroker";
+
+        document.writeln("Variable <br>");
+        document.writeln(namaLengkap + "<br>");
+        document.writeln(namaDepan + "<br>");
+        document.writeln(namaBelakang + "<br>");
+    </script>
+
+    <script>
+        // let
+        let namaPlayer;
+        let clubPlayer;
+
+        namaPlayer = "Ibrahimovic";
+        clubPlayer = "PSG";
+
+        // variable + value
+        let golPlayer = "600";
+
+        document.writeln("Let <br>");
+        document.writeln(namaPlayer + "<br>");
+        document.writeln(clubPlayer + "<br>");
+        document.writeln(golPlayer + "<br>");
+    </script> 
+
+    <script>
+        // const (value nya tidak bisa diubah)
+        const aplikasi = "SISPOMU";
+
+        // aplikasi = "SISO"; // error
+
+        document.writeln(aplikasi + "<br>");
+    </script>
+    
+    <script>
+        document.writeln("Operator Matematika <br>");
+        // operator aritmatika
+        result = 2+2; // 4
+        result = result + 3; // 7
+        // operator augmented assigments
+        result *= 10; //70
+        result -= 20; //50
+        document.writeln(result);
+        document.writeln("</br>");
+        // operator unary
+        result = -result;  //-50 
+        result++; // -49
+        result--; // -50
+        document.writeln(result);
+        document.writeln("</br>");
+    </script>
+
+    <script>
+        document.writeln("Operator Perbandingan");
+        let result = 5 == "5"; // sama dengan
+        document.writeln("<p>" + result + "</p>"); // true
+
+        result = 10 === "5"; // sama dengan dan sama tipe
+        document.writeln("<p>" + result + "</p>"); // true
+
+        result = 10 > 5;
+        document.writeln("<p>" + result + "</p>"); // true
+
+        result = 10 < 5;
+        document.writeln("<p>" + result + "</p>"); // false
+
+        result = 10 >= 5;
+        document.writeln("<p>" + result + "</p>"); // true
+
+        result = 7 <= 7;
+        document.writeln("<p>" + result + "</p>"); // false
+
+        result = 10 != 5; // tidak sama dengan
+        document.writeln("<p>" + result + "</p>"); // true
+
+        result = 10 !== "5"; // tidak sama dengan dan tidak sama tipe
+        document.writeln("<p>" + result + "</p>"); // true
+    </script>
+
+    <script>
+        document.writeln("Operator Logika <br>");
+        const tinggi = 170;
+        const berat = 60;
+
+        const tinggiIdeal = tinggi > 165;
+        document.writeln(tinggiIdeal);
+        const beratIdeal = berat > 65;
+        document.writeln(beratIdeal);
+
+        const ideal = tinggiIdeal && beratIdeal; // bisa diganti dengan operator logika lain &&, ||, dan !
+        document.writeln(ideal);
+    </script>
+</body>
+</html>
