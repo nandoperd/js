@@ -181,6 +181,224 @@
 
         const ideal = tinggiIdeal && beratIdeal; // bisa diganti dengan operator logika lain &&, ||, dan !
         document.writeln(ideal);
+        document.writeln("<br>");
+    </script>
+
+    <script>
+        document.writeln("Connsole <br>");
+        console.debug("debug");
+        console.info("info");
+        console.warn("peringatan");
+        console.error("error");
+        // untuk console table bisa dilihat di pembahasan array
+    </script>
+
+    <script>
+        document.writeln("String Template <br>");
+        const name = "nandoperd";
+        const level = "junior";
+        const job = "programmer";
+        const template = `Name : ${name} ${level} ${job}`;
+
+        console.info(template);
+
+        const price = 50;
+        const template2 = `Price : ${price}, Mahal : ${price > 100}`; //false
+
+        console.info(template2);
+
+        // multiline string
+        const multiline = `My name is nandoperd,
+I am man,
+I am programmer,
+I am from Indonesia`;
+        document.writeln("<pre>");
+        document.writeln(multiline);
+        document.writeln("</pre>");
+    </script>
+
+    <script>
+        document.writeln("Konversi string ke number <br>");
+        const a = parseInt("1");  // string ke number
+        const b = 1;
+        const sum = a + b;
+
+        document.writeln(`<p> ${parseInt("1.1")} </p>`); // string ke number (bilanngan bulat)
+        document.writeln(`<p> ${parseFloat("1.1")} </p>`);  // string ke float
+        document.writeln(`<p> ${Number("1.1")} </p>`); // string ke nnumber (bulat/float)
+
+        const hasil = a.toString() + b.toString(); // number ke string
+        document.writeln(`<p> ${hasil} </p>`);
+    </script>
+
+    <script>
+        document.writeln("NaN (not a number) <br>");
+        document.writeln(`<p> ${parseInt("bukanangka")} </p>`); // NaN
+        document.writeln(`<p> ${parseFloat("1.1nando")} </p>`);  // 1.1, js membaca karna ada angka di depannya
+    
+        // isNaN
+        document.writeln(`<p>${isNaN("salah")} </p>`); // true
+        document.writeln(`<p>${isNaN("1.1")} </p>`); // false
+    </script>
+
+    <script>
+        document.writeln("Array <br>");
+
+        let arrayKosong = [];
+
+        let names = ["nando", "broker", "selundupan", 7];
+
+        // menambah array
+        const club = [];
+        club.push("milan");
+        club.push("inter", "juventus");
+
+        console.table(club);
+        
+        // operasi array
+        console.info(club[0]); // mengambil data array
+        club[1] = "atalanta"; // edit data array
+        delete club[2]; // menghapus data array (tanpa menghapus id nya)
+        club.push(["roma", "lazio"]); // menambah array di dalam array
+        console.table(club);
+    </script>
+
+    <script>
+        document.writeln("Tipe Data Object <br>");
+
+        const player = {}; // object kosong
+
+        // menambah dan ubah
+        player["nama"] = "Zlatan";
+        player["club"] = "Milan";
+        player["posisi"] = "ST";
+        player["tinggi"] = 195;
+
+        player["club"] = "AC Milan"; // ubah
+        // hapus
+        delete player["tinggi"];
+
+        console.table(player);
+
+        // Membuat object dengan properties
+        const zlatan = {
+            nama : "Ibrahimovic",
+            club : "AC Milan",
+            posisi : "ST"
+        };
+
+        console.table(zlatan);
+
+        // mengakses property object
+        console.info(`Nama : ${zlatan.nama}`);
+        console.info(`Club : ${zlatan.club}`);
+        console.info(`Posisi : ${zlatan.posisi}`);
+    </script>
+
+    <script>
+        document.writeln("IF <br>");
+
+        const nilaiUjian = 70;
+
+        if (nilaiUjian > 80) {
+            document.writeln("<p> LULUS </p>");
+        } else {
+            document.writeln("<p> TIDAK LULUS </p>");
+        }
+
+        // else if
+        const nilaiUlangan = 70;
+        if (nilaiUlangan >80 ) {
+            document.writeln("<p> BAGUS </p>")
+        } else if (nilaiUlangan > 60) {
+            document.writeln("<p> LUMAYAN </p>")
+        } else {
+            document.writeln("<p> JELEK </p>")
+        }
+    </script>
+
+    <script>
+        document.writeln("Popup (line 321) <br>");
+
+        // alert("Alert"); // alert
+
+        // const ente = prompt("siapa nama ente?"); // prompt
+
+        // alert(`Halo ${ente}`);
+
+        // const masuk = confirm("Ente mau masuk?"); // confirm
+        // if (masuk) {
+        //     const ente = prompt("siapa nama ente?");
+        //     alert(`Halo ${ente}`);
+        // } else {
+        //     alert("Ok yaudah");
+        // }
+    </script>
+
+    <script>
+        document.writeln("Undefined <br>");
+        // undefined adalah sebuah kata kunci di js, sebuah tipe data,
+        // variabel yg belum ditambahkan nilai, berarti merupakan tipe data undefined, berbeda dengan null
+
+        // let lah;
+        // if (lah === undefined) {
+        //     alert("UNDEFINED");
+        // } else {
+        //     alert("DEFINED");
+        // }
+
+        //  undefined nilai array
+        const loh = ["waduh", "haduh"];
+
+        // if (loh[2] === undefined) { // karena index 2 tidak ada
+        //     alert("UNDEFINED");
+        // } else {
+        //     alert("DEFINED");
+        // }
+    </script>
+
+    <script>
+        document.writeln("Null <br>");
+   
+        let yah = null;
+
+        // if (yah === undefined) { 
+        //     alert("UNDEFINED");
+        // } else if(yah === null){
+        //     alert("NULL");
+        // } else  {
+        //     alert("OK");
+        // }
+    </script>
+    
+    <script>
+        document.writeln("Switch <br>");
+
+        const akre = "";
+
+        switch (akre) {
+            case "A":
+                document.writeln("<p>Akreditasi A</p>");
+                break;
+            case "B":
+                document.writeln("<p>Akreditasi B</p>");
+                break;
+            case "C":
+                document.writeln("<p>Akreditasi C</p>");
+                break;
+            default:
+                document.writeln("<p>Akreditasi rahasia, hehe</p>");
+                break;
+        }
+    </script>
+
+    <script>
+        document.writeln("Typeof <br>"); // untuk mengecek tipe data
+
+        let type = "budi";
+
+        const tipeData = typeof type;
+        document.writeln(`<p>${tipeData}</p>`);
     </script>
 </body>
 </html>
