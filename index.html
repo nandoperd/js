@@ -400,5 +400,66 @@ I am from Indonesia`;
         const tipeData = typeof type;
         document.writeln(`<p>${tipeData}</p>`);
     </script>
+
+    <script>
+        document.writeln("In Operator <br>");  // cek apakah  property/index ada atau tidak
+        const ronaldo  = {
+            namaDepan : "Ronaldo",
+            namaBelakang : "Nazario"
+        };
+
+        const adaga = "namaDepan" in ronaldo; // true
+        document.writeln(`<p>${adaga}</p>`);
+    </script>
+
+    <script>
+        document.writeln("Ternary Operator");
+
+        const exam = 60;
+        const word = exam >= 75 ? "Congrats!" : "Try Again";
+
+        document.writeln(`<p>${word}</p>`);
+
+        // ternary operator dengan banyak pengkondisian
+        const imtihan = 75;
+        const kalimah = imtihan >=90 ? "Mumtaz!" : (imtihan >= 80 ? "Jayyid Jiddann" : (imtihan >= 70 ? "Jayyid" :  "Bahlul"));
+
+        document.writeln(`<p>${kalimah}</p>`);
+    </script>
+
+    <script>
+        document.writeln("Nullish Coalescing Operator <br>"); // digunakan untuk null dan undefined, cirinya "??""
+        
+        let sinul = null;
+        
+        let data = sinul;
+        
+        data = sinul ?? "Data default";
+        
+        document.writeln(`<p>${data}</p>`);
+    </script>
+
+    <script>
+        document.writeln("Optional Chaining <br>"); // untuk antisipasi data null, cirinya ?.
+
+        const person = {
+            address: {
+                country : "Indonesia"
+            }
+        };
+
+        let country = person?.address?.country; // jika ada data yg null/undefined, maka akan mengoper ke data setelahnya
+
+        document.writeln(`<p>${country}</p>`);
+    </script>
+
+    <script>
+        document.writeln("For Loop <br>"); // perulangan for
+        
+        for (let counter = 1; counter <= 10; counter++ ){
+            document.writeln(`<p>Perulangan Ke- ${counter} </p>`)
+        }
+    </script>
+
 </body>
 </html>
