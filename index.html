@@ -228,7 +228,7 @@ I am from Indonesia`;
         document.writeln(`<p> ${Number("1.1")} </p>`); // string ke nnumber (bulat/float)
 
         const hasil = a.toString() + b.toString(); // number ke string
-        document.writeln(`<p> ${hasil} </p>`);
+        document.writeln(`<p> ${hasil} </p>`); // 11 (string)
     </script>
 
     <script>
@@ -457,9 +457,157 @@ I am from Indonesia`;
         document.writeln("For Loop <br>"); // perulangan for
         
         for (let counter = 1; counter <= 10; counter++ ){
-            document.writeln(`<p>Perulangan Ke- ${counter} </p>`)
+            document.writeln(`<p>for loop Ke- ${counter} </p>`)
         }
     </script>
 
+    <script>
+        document.writeln("While loop <br>"); // while loop
+
+        let angko=1;
+        while (angko <=5) {
+            document.writeln(`<p>while loop ke- ${angko}</p>`)
+            angko++
+        }
+    </script>
+
+    <script>
+        document.writeln("do While loop <br>"); // do while loop
+
+        let ang=1;
+        do {
+            document.writeln(`<p>do while loop ke- ${ang}</p>`)
+            ang++
+        } while (ang <= 3)
+        // disini, jika variabel angka lebih besar dari angka eksekusi while, maka akan menampilkan nilai angka pada let.
+        // berbeda dengan while, maka yang tampil kosong
+    </script>
+
+    <script>
+        document.writeln("break & continue <br>"); // break
+
+        let angs=1;
+        while(true) { // true berarti akan mengulang terus-menerus
+            document.writeln(`<p>break ke- ${angs}</p>`);
+            angs++;
+
+            if (angs > 3) {
+                break;
+            }
+        }
+    </script>
+
+    <script>
+        document.writeln("break <br>"); // break
+
+        let angku=1;
+        while(true) { // true berarti akan mengulang terus-menerus
+            document.writeln(`<p>break ke- ${angku}</p>`);
+            angs++;
+
+            if (angs > 3) {
+                break; // memberhentikan perulangan
+            }
+        }
+    </script>
+
+    <script>
+        document.writeln("continue <br>"); // continue
+
+        for (let i=1; i <=10; i++) {
+            if (i % 2 === 0) {
+                continue; // melakukan break saat ini tapi melanjutkan perulangan setelahnya
+            }
+            document.writeln(`<p>perulangan ganjil ke ${i}</p>`);
+        }
+    </script>
+
+    <script>
+        document.writeln("label <br>"); // label (cirinya menggunakan :)
+
+        console.info("label");
+        loopi:
+        for(let i=1; i<10; i++) {
+            loopj:
+            for(let j=1; j<=3; j++) {
+                console.info(`${i}-${j}`);
+            }
+        }
+    </script>
+
+    <script>
+        console.info("label continue"); // label menggunakan continue
+        loopx:
+        for(let x=1; x<3; x++) {
+            loopy:
+            for(let y=1; y<=10; y++) {
+                if(y>3) {
+                    continue loopx; // label berfungsi untuk memanggil perulangan loopx
+                }
+                console.info(`${x}-${y}`);
+            }
+        }
+    </script>
+
+    <script>
+        document.writeln("for in <br>"); // for in berfungsi untuk mengambil data properti/index di dalam objek
+
+        const balo = {
+            firstName : "Mario",
+            middleName : "Barwuah",
+            lastName : "Ballotelli"
+        }
+
+        for(const property in balo) {
+            document.writeln(`<p>${property} : ${balo[property]}</p>`)
+        }
+
+        // for in juga bisa digunakan pada array, property nya ubah menjadi index
+        const messi = ["Lionel", "Ankara", "Messi"];
+        for(const index in messi) {
+            document.writeln(`<p>${index} : ${messi[index]}</p>`)
+        }
+    </script>
+
+    <script>
+        document.writeln("for of <br>"); // for of berfungsi untuk mengambil data (value) pada string/array dll yang bersifat iterable
+
+        const bedebah = ["Bedebah", "Broker", "Gaming"];
+        for(const name of bedebah) {
+            document.writeln(`<p>${name}</p>`);
+        }
+
+        // bisa juga per karakter
+        const beds = "FC BEDEBAH";
+        for(const character of beds) {
+            document.writeln(`<p>${character}</p>`);
+        }
+        // note : for of jika digunakan pada object maka akan error karena bukan iterable
+    </script>
+
+    <script>
+        document.writeln("with statement <br>"); // with statement digunakan untuk meringkas pemanggilan data pada objek
+
+        const maignan = {
+            firstName : "Magic",
+            middleName : "Mike",
+            lastName : "Maignan"
+        }
+
+        // memanggil data tanpa with statement
+        console.info(maignan.firstName);
+        console.info(maignan.middleName);
+        console.info(maignan.lastName);
+
+        // memanggil data dengan with statement
+        with(maignan){
+            console.info(firstName); // nama objek tidak lagi diperlukan
+            console.info(middleName);
+            console.info(lastName);
+        }
+
+        // note : with statement tidak disarankan karena dapat menyebabkan ambigu pada pemanggilan variabel
+    </script>
+    function : sisa 3:14
 </body>
 </html>
