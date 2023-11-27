@@ -608,6 +608,659 @@ I am from Indonesia`;
 
         // note : with statement tidak disarankan karena dapat menyebabkan ambigu pada pemanggilan variabel
     </script>
-    function : sisa 3:14
+    
+    <script>
+        document.writeln("function <br>"); // function
+
+        // membuat function
+        function sayHello() {
+            document.writeln("<p>hello world</p>");
+        }
+
+        // memanggil function
+        sayHello();
+
+        // function parameter
+        function haloBoi(namaDepan, namaBelakang) {
+            document.writeln(`<p>halo ${namaDepan} ${namaBelakang}`);
+        }
+
+        haloBoi("Broker", "Gelap");
+        haloBoi("Vinsmoke", "Sanji");
+
+        // function return value
+        function halobro(namaDepan,namaBelakang) {
+            const ngomong = `<p>halo ${namaDepan} ${namaBelakang}</p>`;
+            return ngomong;
+        }
+
+        const panggil = halobro("Roronoa", "Zoro");
+        document.writeln(`<p>${panggil}</p>`);
+
+        // function return value lebih dari satu
+        function nilaiAkhir(value) {
+            if(value>90){
+                return "A";
+            } else if(value>80) {
+                return "B";
+            } else if(value>70) {
+                return "C";
+            } else if(value>60) {
+                return "D";
+            } else {
+                return "E";
+            }
+        }
+
+        const nilaiKamu = nilaiAkhir(99);
+        document.writeln(`<p>${nilaiKamu}</p>`);
+
+        // menghentikan eksekusi menggunakan return
+        function adakah(nilai, cari) {
+            for(const element of nilai) {
+                console.info(`Iterasi element ${element}`); // cek perulangan ketika distop
+                if(element === cari) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        const nilai = [67,78,79,70,83,90];
+        const cari = 99;
+        const nah = adakah(nilai, cari);
+        document.writeln(`${nah}`);
+    </script>
+
+    <script>
+        document.writeln("optional parameter <br>"); // optional parameter
+        // di javascript, parameter sifatnya opsional, parameter kosong akan dibaca undefinied
+        function haloGan(namaDepan, namaTengah, namaBelakang) {
+            console.info(namaDepan);
+            console.info(namaTengah);
+            console.info(namaBelakang);
+        }
+
+        haloGan("Monkey"); // namaTengah dan namaBelakang akan terbaca undifinied
+    </script>
+    
+    <script>
+        document.writeln("default parameter <br>"); // default parameter
+
+        function daftar(nama, status="ga jelas") {
+            console.log(nama);
+            console.log(status);
+        }
+
+        daftar("Dembele", "Menikah");
+        daftar("Drogba"); // akan terisi nilai default "ga jelas";
+        daftar("Ekambi", undefined); // akan terisi nilai default "ga jelas";
+        daftar("Tel", null); // null tetap akan terkirim null;
+    </script>
+
+    <script>
+        document.writeln("rest parameter <br>"); // rest parameter (cirinya adalah ...)
+        // berfungsi untuk mengirim data pada parameter dan otomatis dikonversi menjadi array
+
+        function jumlah(name, ...data){
+            let total = 0;
+            for(const item of data) {
+                total += item;
+            }
+            document.writeln(`<p>Total ${name} = ${total}`);
+        }
+
+        jumlah("Ayam", 10,90,80,200,70);
+
+        // spread syntax, berfungsi untuk mengubah data array menjadi rest parameter (cirinya sama ditambahkan ...)
+        const nilaiArray = [10,10,10,10,10];
+        jumlah("Spread", nilaiArray); // yang tampil adalah data array
+        jumlah("Spread", ...nilaiArray); // data array dikonversi menjadi rest parameter
+    </script>
+    
+    <script>
+        document.writeln("function di parameter (menjadi value) <br>");
+
+        function haibro(nama) {
+            document.writeln(`<p>hai ${nama}!`);
+        }
+
+        const hai = haibro; // function haibro menjadi parameter hai
+        hai("broker");
+
+        // function di value
+        function kasihNama(callback) {
+            callback("James") // valuenya ada di function
+        }
+
+        kasihNama(hai);
+    </script>
+
+    <script>
+        document.writeln("Anonymous function <br>");
+
+        // function yang sebelumnya disertai nama function setelahnya bisa dibuat menjadi tidak ada nama functionnya (anonymous)
+        // anonymous function pada variabel
+        let cakap = function (nama) {
+            document.writeln(`<p>halo ${nama}</p>`)
+        }
+
+        cakap("Johnson");
+
+        // anonymous function di parameter
+        function panggilSaya(callback) {
+            callback("Badang");
+        }
+
+        panggilSaya(function(nama){
+            document.writeln(`<p>oi ${nama}</p>`)
+        });
+    </script>
+
+    <script>
+        document.writeln("Function dalam function (Nested Function) <br>");
+
+        function outer() {
+            function inner() {
+                console.info("Inner Function");
+            }
+
+            inner();
+        }
+
+        outer();
+        inner(); // inner is not defined (karena dipanggil inner function di luar function)
+    </script>
+
+    <script>
+        document.writeln("Scope <br>");
+        // scope terbagi 2 : global dan lokal
+
+        // global scope
+        let angki = 0; // ini adalah global scope yang bisa diakses juga oleh lokal scope
+
+        // global scope (maksudnya fungsi di bawah ini adalah global scope)
+        function tambahin() {
+            // local scope (yang di dalam fungsi ini adalah local scope dimana tidak bisa digunakan oleh lokal scope lainnya)
+            angki++;
+        }
+
+        function other() {
+            // local scope
+        }
+
+        tambahin(); // fungsi tambahin yang berisi parameter dari global scope akan berfungsi
+        console.info(angki);
+
+        // contoh local scope
+        function pertama(){
+            // local scope pertama
+            let variabelPertama = "Pertama";
+            console.info(variabelPertama); // ini bisa
+        }
+
+        function kedua(){
+            // local scope kedua
+            let variabelKedua = "Kedua";
+        }
+
+        pertama();
+        kedua();
+        // console.info(variabelPertama); // error (karena local scope, jadi hanya bisa dipanggil pada function pertama())
+        // console.info(variabelKedua); // error
+
+        // contoh nested function scope
+        function sulung() {
+            let nilaiSulung = "Sulung";
+
+            function tengah() {
+                console.info(nilaiSulung); // mengambil paramater di atas (bisa)
+                const variabelNested = "Nested";
+            }
+
+            tengah();
+            console.info(variabelNested);
+        }
+
+        sulung();
+    </script>
+    
+    <script>
+        document.writeln("Recursive Funtion <br>"); // recursive funtion adalah kemampuan function memanggil functionnya sendiri
+
+        // contoh faktorial
+        // faktorial menggunakan looping
+        function factorial(value) {
+            let faktor = 1;
+            for(let i = 1; i<=5; i++) {
+                faktor *= i;
+            }
+            return faktor;
+        }
+
+        console.info(factorial(5));
+        console.info(1 * 2 * 3 * 4 * 5); // faktorial 5 manual
+
+        // faktorial menggunakan recursive
+        function factorialRecursive(value) {
+            if(value === 1){
+                return 1;
+            } else {
+                return value * factorialRecursive(value-1);
+            }
+        }
+
+        console.info(factorialRecursive(5));
+    </script>
+
+    <script>
+        document.writeln("Function generator <br>"); // function generator adalah data yang bisa diiterasi seperti array
+        // cirinya adalah tanda * setelah function dan menggunakan yield untuk mengembalikan datanya
+
+        function* createNames() {
+            yield "Broker";
+            yield "Gelap";
+            yield "Misterius"; // pada function generator ini kita seakan membuat data seperti array (namun bukan array)
+        }
+
+        console.info(createNames()); // hasilnya adalah generator dan tidak keluar data array nya (generator ini sifatnya lazy)
+        
+        const namess = createNames();
+        console.info(namess[0]); // undefined karena ini bukan data array jadi tidak bisa diperlakukan sebagaimana array
+
+        // generator hanya bisa diiterasi dan tidak bisa dipanggil dengan index
+        for (const name of namess) {
+            console.info(name); // datanya akan muncul sebagai iterasi
+        }
+
+        // contoh function generator kompleks
+        function* buatGanjil(value) {
+            for(let i=1; i<=value; i++) {
+                if(i % 2 === 1) {
+                    yield i;
+                }
+            }
+        }
+
+        const numbers = buatGanjil(10);
+        for (const number of numbers) {
+            console.info(number); // akan tampil iterasi angka ganjil dari 1 sampai 10
+        }
+    </script>
+    
+    <script>
+        document.writeln("Lazy evaluation <br>");
+        // sifat lazy ialah jika data belum diambil, maka yield selanjutnya tidak akan diambil
+        // contoh lazy pada generator di atas
+        // lazy
+        function* buatGenap(value) {
+            for(let i=1; i<=value; i++) {
+                if(i % 2 === 0) {
+                    console.info(`Yield ${i}`) // menampilkan sifat lazy generator, jadi dia akan menarik datanya satu per satu terlebih dahulu baru mengirimkan data selajutnya
+                    yield i;
+                }
+            }
+        }
+
+        const nomors = buatGenap(10);
+        // for (const number of nomors) {
+        //     console.info(number);
+        // }  // jika ini dicomment, maka iterasi yield tidak akan berjalan (lazy)
+
+        // iterasi pada lazy baru akan berjalan jika ada perintah
+        // contoh function next pada generator menggunakan next
+        console.info(nomors.next().value); // maka yang data yang muncul adalah 1 data saja (data setelahnya/next)
+        console.info(nomors.next().value); // 2 data
+        console.info(nomors.next().value); // 3 data dst, jadi lazy dapat dipanggil satu persatu sesuai kebutuhan
+
+        // perbandingan dengan lawan sifat lazy (eager)
+        // fungsi buat genap menggunakan array yang sifatnya eager
+        // eager
+        function buatGenapArray(value) {
+            const angkaArray = []
+            for(let i=1; i<=value; i++) {
+                if(i % 2 === 0) {
+                    console.info(`Yield ${i}`) // hasilnya adalah : yield dihitung semua terlebih dahulu, kemudian baru mengirimkan datanya (sifat eager)
+                    angkaArray.push(i);
+                }
+            }
+            return angkaArray;
+        }
+
+        const nomers = buatGenapArray(10);
+        // for (const number of nomers) {
+        //     console.info(number);
+        // } // jika ini dicomment, maka iterasi yield akan tetap berjalan walau tidak dilakukan iterasi (eager)
+    </script>
+
+    <script>
+        document.writeln("Arrow Function <br>") // cirinya adalah tanda =>
+
+       const haloBung = (nama) => {
+        const hoi = `hoi ${nama}`;
+        console.info(hoi);
+       }
+
+       haloBung("Tomiasu");
+
+       // Arrow function tanpa block
+       const haloSay = (nama) => console.info(`halo ${nama}`);
+       haloSay("Barbie");
+
+       // Arrow function return value
+       // jika menggunakan block maka memakai return
+    //    const jumlahIn = (first, second) => {
+    //         return first+second
+    //    }
+
+       // kalo ga pake block, tidak perlu pakai return
+       const jumlahIn = (first, second) => first+second;
+
+       console.info(jumlahIn(100,100));
+
+       // Arrow function tanpa kurung parameter
+       // ini bisa dilakukan jika parameternya hanya satu
+       const haiGan = nama => console.info(`hai ${nama}`);
+       haiGan("Eto'o");
+
+       // Arrow function sebagai parameter
+       // versi anonymous function
+       function kasihJulukan(callback) {
+        callback("Cicharito")
+       };
+
+    //    kasihJulukan(function(nama){
+    //     console.info(`saya ${nama}`);
+    //    });
+
+       // versi arrow function
+       kasihJulukan(nama => console.info(`saya ${nama}`));
+    </script>
+
+    <script>
+        document.writeln("Closure <br>"); // closure adalah kombinasi function dan bundel referensi ke data sekitarnya
+        // di pembahasan sebelumnya, local scope tidak bisa gunakan di selain fungsinya, dengan closure ini bisa
+        function createAdder(value) {
+            const owner = "broker"; // bundel fitur closure
+
+            // function di bawah ini seolah adalah parameter dari createAdder
+            function add(param) {
+                console.info(owner);
+                return value + param;
+            }
+
+            return add;
+        }
+
+        const addTwo = createAdder(2);
+        // seakan addTwo ini adalah :
+        // function addTwo(param) {
+        //     console.info("broker");
+        //     return 2 + param;
+        // }
+        // penjelasan : owner dan function add dikeluarkan dari scope menggunakan closure, dimana sebelumnya local scope tidak bisa diakses di global 
+        console.info(addTwo(10));
+        console.info(addTwo(20));
+
+        const addTen = createAdder(10);
+        console.info(addTen(10));
+        console.info(addTen(20));
+    </script>
+    
+    <script>
+        document.writeln("Object Method (Function di method) <br>");
+
+        const seorang = {
+            nama: "broker",
+            // salam: function(nama) {
+            //     alert(`halo ${nama}`)
+            // }
+        }
+
+        // menambahkan method pada object
+        // misal function di atas dihapus
+        seorang.salam = function (nama) {
+            alert(`halo ${nama}`)
+        }
+        seorang.salam("Pembelajar");
+    </script>
+
+    <script>
+        document.writeln("Kata kunci this <br>");
+        
+        // this di global scope
+        console.info(this); // yang muncul adalah window (browser)
+
+        // this di function
+        function cekThis() {
+            console.info(this);
+
+            // this di nested/inner function
+            function cekThisInner(){
+                console.info(this);
+            }
+
+            cekThisInner(); // yang muncul sama window seperti di global scope
+        }
+
+        cekThis(); // yang muncul sama window seperti di global scope
+
+        // this di object method
+        // this pada object method akan mengembalikan kepada nilai function
+        const jeneng = {
+            nama : "Broker",
+            sayBro: function(nama) {
+                // console.info(this); // this akan memunculkan properti dan fungsi pada jeneng
+                console.info(`hai ${nama}, nama saya adalah ${this.nama}`) // this.nama mengacu pada nama pada function jeneng
+            }
+        }
+
+        jeneng.sayBro("Doflamingo");
+    </script>
+
+    <script>
+        document.writeln("Arrow function di object <br>");
+        
+        // pada kode sebelumnya, object method dibuat menggunakan anonymous function
+        // arrow function bisa dugunakan pada object method dengan catatan tidak terdapat function argumen, generator, this, dan super di dalamnya
+        const sampean = {
+            nama: "Jacob",
+            sayBro: (nama) => {
+                console.info(this); // this pada arrow function akan mengacu ke window seperti global scope
+                console.info(`hai ${nama}`) // this.nama mengacu pada nama pada function jeneng
+            }
+        }
+
+        sampean.sayBro("Doflamingo");
+    </script>
+
+    <script>
+        document.writeln("Getter dan Setter <br>");
+        
+        // Getter (membuat function berbeda untuk mengambil data menjadi properti)
+        const orang = {
+            namaDepan: "Khabib",
+            namaBelakang: "Nurmagomedov",
+
+            // function getter
+            get namaLengkap(){
+                return `${this.namaDepan} ${this.namaBelakang}`;
+            },
+
+            // function setter (digunakan untuk mengatur data)
+            set namaLengkap(value) {
+                const array = value.split(" "); // memisah data
+                this.namaDepan = array[0];
+                this.namaBelakang = array[1];
+            }
+        }
+
+        orang.namaLengkap = "Firman Utina";
+        console.table(orang);
+
+        orang.namaLengkap = "Ponaryo Astaman";
+        console.table(orang);
+
+        orang.namaLengkap = "Eka Ramdhani";
+        console.table(orang);
+
+        orang.namaDepan = "Broker";
+        console.info(orang.namaLengkap);
+    </script>
+
+    <script>
+        document.writeln("Problem var <br>");
+        // var tidak direkomendasikan atau digunakan lagi karena tidak memiliki blockscope
+        // contoh let
+
+        // let g = 1;
+        var g = 1; // contoh var
+        // for (let g = 0; g<10; g++){
+        for (var g = 0; g<10; g++){
+            console.info(`Local : ${g}`);
+        }
+
+        // console.info(`Global : ${g}`); // g pada let akan memanggil g pada nilai global(1)
+        console.info(`Global : ${g}`); // g pada var tidak terprediksi(pada kasus ini nilainya 10)
+    </script>
+
+    <script>
+        document.writeln("Destructuring <br>");
+        // Destructuring digunakan untuk membongkar nilai/valu pada sebuah array/object ke dalam variabel
+
+        // contoh destructuring
+        const panggilan = ["Broker", "Selundupan", "Bedebah", "NoN", "Letto"];
+
+        const [namaFront, namaMiddle, namaEnd, ...lainnya] = panggilan;
+        
+        console.info(namaFront);
+        console.info(namaMiddle);
+        console.info(namaEnd);
+        console.info(lainnya); // data lainnya akan keluar sebagai array
+
+        // Mengambil data array menggunakan destructuring
+        const youtuber = {
+            namanye: "Kuda Koding",
+            alamatnye: {
+                jalan: "Merpati",
+                kecamatan: "Cileungsi",
+                kabupaten: "Bogor"
+            },
+            hobinye: "Berkuda",
+            favoritnye: "Jengkol"
+        }
+
+        // let {namanye, alamatnye, ...lainnye } = youtuber; // untuk memanggil pada array/object menggunakan let
+
+        // contoh destructuring nested object
+        // misal alamantnye
+        let {namanye, alamatnye: {jalan, kecamatan, kabupaten}, ...lainnye} = youtuber;
+        console.info(namanye);
+        // console.info(alamatnye); // jika menggunakan nested, maka alamatnye tidak bisa digunakan lagi karena sudah dinested
+        console.info(jalan);
+        console.info(kecamatan);
+        console.info(kabupaten);
+        console.info(lainnye);
+
+        // Destructuring di function parameter (destructuring juga bisa digunakan pada function parameter)
+        function dataOrang({namaDepan, namaTengah, namaBelakang}) {
+            console.info(namaDepan);
+            console.info(namaTengah);
+            console.info(namaBelakang);
+        }
+
+        const orangnye = {
+            namaDepan: "Zlatan",
+            namaTengah: "Bruno",
+            namaBelakang: "Ibrahimovic"
+        }
+
+        dataOrang(orangnye);
+
+        // Destructuring di function parameter (Array)
+        function ngitung([satu, dua]) {
+            return satu + dua;
+        }
+
+        console.info(ngitung([2,2]));
+        console.info(ngitung([25,25]));
+
+        // Default value pada destructuring
+        const milan = ["Nesta", "Serginho"];
+        const [bekTengah, bekKiri, bekKanan = "Cafu"] = milan; // nilai bekKanan dibuat default value (default value akan digunakan jika tidak ada nilainya)
+
+        console.info(bekTengah);
+        console.info(bekKiri);
+        console.info(bekKanan);
+
+        // Menggunakan nama variabel lain pada destructuring
+        const madrid = {
+            cf: "Benzema",
+            lwf: "Ronaldo"
+        }
+
+        let {
+            cf: striker = "Higuain",
+            lwf: sayapKiri, // merubah ke nama variabel lain
+            rwf: sayapKanan = "Dimaria"
+        } = madrid;
+
+        // console.info(cf); // maka nama yang sebelumnya tidak berfungsi
+        console.info(striker);
+        console.info(sayapKiri);
+        console.info(sayapKanan);
+    </script>
+
+    <script>
+        document.writeln("Strict mode <br>");
+        // pada dasarnya ketika kita menjalankan kode javascript, secara default programnya berjalan dalam mode tidak strict (sloppy mode)
+        // pada mode strict akan dilakukan optimasi pada bahasa javascript yang tidak lagi direkomendasikan
+        // untuk menyalakan mode strict, cukup dengan menjalankan use strict
+
+        function useStrictMode() {
+            'use strict';
+            const presiden = {
+                namanyo: "Susilo"
+            }
+
+            // contoh menggunakan with statement yang tidak direkomendasikan (dilarang pada mode strict) maka otomatis akan error
+            with (presiden) {
+                console.info(namanyo)
+            }
+        }
+
+        useStrictMode();
+    </script>
+
+    <script>
+        document.writeln("Debugger <br>");
+        // debugger adalah proses mencari masalah/error pada kode, caranya dengan menambahkan debugger
+
+        function bikinNama(namaDepan, namaTengah, namaBelakang) {
+            // debugger; // debugger akan muncul pada sources
+            const namaLengkap = `${namaDepan} ${namaTengah} ${namaTengah}`;
+            return namaLengkap;
+        }
+
+        const namamu = bikinNama("Filippo", "Pippo", "Inzaghi");
+        console.info(namamu);
+
+        function hitung(...nomorz) {
+            debugger;
+            let total = 0;
+            for (const nomor of nomorz) {
+                total = nomor;
+            }
+            return total;
+        }
+
+        console.info(hitung(1, 1, 1));
+    </script>
+
+    <script>
+        document.writeln("--- SELESAI --- <br>");
+        document.writeln("Credits : Programmer Zaman Now <br>");
+        document.writeln(`<a target="blank" href="https://github.com/ProgrammerZamanNow/belajar-javascript-dasar">Repository</a>`)
+    </script>
 </body>
 </html>

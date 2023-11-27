@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LATIHAN</title>
+    <style>
+        .lat {
+            color: darkmagenta;
+            font-size: x-large;
+        }
+        .judul {
+            color:darkorchid;
+            font-weight: bold;
+            font-size: large;
+            margin-bottom: auto;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.writeln(`<p class="lat">LATIHAN</p>`);
+        document.writeln(`<p class="judul">Tipe data number</p>`);
+        const b = 100;
+        const d = 7.5;
+        document.writeln(`Bilangan bulat : ${b} <br>`);
+        document.writeln(`Bilangan desimal : ${d} <br>`);
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Number notation</p>`);
+        const bin = 0b011111100000;
+        const hex = 0xFF;
+        const oct = 0o111;
+        document.writeln(`Binary : ${bin} <br>`);
+        document.writeln(`Hexadecimal : ${hex} <br>`);
+        document.writeln(`Octal : ${oct} <br>`);
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Boolean (true/false)</p>`);
+        let cekSama = 5 == "5";
+        let cekGaSama = 10 === 90;
+        document.writeln("<p>" + cekSama + "</p>"); // cukup begini js akan otomatis menampilkan true/false
+        document.writeln("<p>" + cekGaSama + "</p>");
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Let</p>`);
+        let player;
+        let club;
+        let gol;
+
+        player = "Olivier Giroud";
+        club = "AC Milan"
+        gol = 300;
+
+        document.writeln(`${player} pemain ${club} dengan torehan ${gol} gol.`);
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Const</p>`);
+        const sistem = "SISPOMU";
+
+        sistem = "SISMOPU"; // jika mencoba merubah nilai sistem maka akan error karena const (constant/tetap)
+        document.writeln(sistem);
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Operator aritmatika</p>`);
+        n = 0;
+        n = n + 3;
+        // operator augmented assigments
+        n *= 10;
+        n /= 3;
+        n += 5;
+        n -= 3;
+        // operator unary
+        n = -n;
+        n = -n;
+        n++;
+        n--; // 12
+        document.writeln(n);
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Operator perbandingan</p>`);
+        let x1 = 10 == "10"
+        let x2 = 10 === "10"
+        let x3 = 10 != "10"
+        let x4 = 10 !== "10"
+        let x5 = 10 > "10"
+        let x6 = 10 >= "10"
+        document.writeln("<p>" + x1 + "</p>");
+        document.writeln("<p>" + x2 + "</p>");
+        document.writeln("<p>" + x3 + "</p>");
+        document.writeln("<p>" + x4 + "</p>");
+        document.writeln("<p>" + x5 + "</p>");
+        document.writeln("<p>" + x6 + "</p>");
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Operator logika</p>`);
+        const tinggi = 175;
+        const berat= 60;
+
+        tinggiIdeal = tinggi > 170;
+        document.writeln(tinggiIdeal);
+
+        beratIdeal = berat >= 70;
+        document.writeln(beratIdeal);
+
+        // const ideal= tinggiIdeal && beratIdeal;
+        // const ideal= tinggiIdeal || beratIdeal;
+        const ideal= !tinggiIdeal || beratIdeal;
+        document.writeln(ideal);
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Console</p>`);
+        const angkaPesan = 10+10+30;
+
+        console.debug(angkaPesan);
+        console.log(angkaPesan);
+        console.info(angkaPesan);
+        console.warn(angkaPesan);
+        console.error(angkaPesan);
+    </script>
+    
+    <script>
+        document.writeln(`<p class="judul">Konversi string ke number</p>`);
+        const z = "1";
+        const zx = 4 ;
+        const parseZ = parseInt(z);
+
+    </script>
+
+</body>
+</html>
