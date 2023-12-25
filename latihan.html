@@ -119,21 +119,782 @@
     <script>
         document.writeln(`<p class="judul">Console</p>`);
         const angkaPesan = 10+10+30;
+        let angkaSiArray = [3, 5, 8];
 
         console.debug(angkaPesan);
         console.log(angkaPesan);
         console.info(angkaPesan);
         console.warn(angkaPesan);
         console.error(angkaPesan);
+        console.table(angkaSiArray);
     </script>
     
     <script>
         document.writeln(`<p class="judul">Konversi string ke number</p>`);
         const z = "1";
+        const zw = "1.5";
         const zx = 4 ;
-        const parseZ = parseInt(z);
+        const zy = parseInt(z);
+        const cobaHitung = zy + zx;
+        document.writeln(cobaHitung);
 
+        document.writeln(parseFloat(zw)); // to float
+        document.writeln(Number(zw)); // to float/bulat
+        document.writeln(zx.toString() + zx.toString()); // number to string
     </script>
 
+    <script>
+        document.writeln(`<p class="judul">NaN (Not a Number)</p>`);
+        document.writeln(`<p>${isNaN(5)}</p>`)
+        document.writeln(`<p>${isNaN("1.1")}</p>`)
+        document.writeln(`<p>${isNaN("1.1nando")}</p>`) // true
+        document.writeln(`${parseFloat("1.1broker")}`) // tetap terbaca angka
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Array</p>`);
+
+        let acmilan = [];
+
+        acmilan.push("Inzaghi")
+        acmilan.push("Sevchenko", "Rui Costa", "Pirlo", "Gilardino")
+        
+        console.info(acmilan[0]);
+        acmilan[2] = "Kaka";
+        delete acmilan[3]; // id nya tidak kehapus
+        acmilan.push(["Balotelli", "Bacca"]); // array dalam array
+        console.table(acmilan);
+        document.writeln(acmilan);
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Tipe data object</p>`);
+
+        const ibra = {};
+
+        ibra["nama"] = "Zlatan";
+        ibra["posisi"] = "CF";
+        ibra["nasional"] = "Swedia";
+        ibra["no"] = "11";
+        ibra["ovr"] = "90";
+
+        ibra["posisi"] = "ST"; // edit
+        delete ibra["ovr"]; // delete
+        console.table(ibra);
+
+        // langsung
+        const ozil = {
+            nama: "Mesut",
+            posisi: "AMF",
+            nasional: "Jerman",
+            no: "8"
+        }
+
+        console.table(ozil);
+        document.writeln(`${ibra["nama"]} | `);
+        document.writeln(`${ozil["nasional"]} | `);
+        document.writeln(`${ozil.no} | `);
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">IF</p>`);
+        let jarak = 5;
+        if (jarak > 10) {
+            document.writeln("<p>JAUH</p>")
+        } else if (jarak > 15) {
+            document.writeln("<p>JAUH BANGET</p>")
+        } else {
+            document.writeln("<p>DEKET</p>")
+        }
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Popup</p><br>`);
+        document.writeln(`<button id="klik" onclick="diklik()">Klik</button>`);
+        
+        function diklik() {
+            const you = prompt("Siapa nama kamu?");
+            if (you) {
+                alert(`Halo ${you}`)
+            } else {
+                alert("OK FINE!")
+            }
+        } 
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Switch</p><br>`);
+
+        document.writeln(`<button onclick="ubahAkre('A')">A</button>`)
+        document.writeln(`<button onclick="ubahAkre('B')">B</button>`)
+        document.writeln(`<button onclick="ubahAkre('C')">C</button>`)
+        document.writeln(`<button onclick="ubahAkre('D')">D</button>`)
+        document.writeln(`<button onclick="ubahAkre('E')">E</button>`)
+        document.writeln(`<p id="hasilAkre"></p>`)
+
+        let akre = '';
+        function ubahAkre(nilai) {
+            akre = nilai;
+            tampilAkre();
+        }
+
+        function tampilAkre() {
+            switch (akre) {
+                case "A":
+                document.getElementById("hasilAkre").innerHTML = "Excellent!";
+                break;
+                case "B":
+                document.getElementById("hasilAkre").innerHTML = "Good";
+                break;
+                case "C":
+                document.getElementById("hasilAkre").innerHTML = "Not bad";
+                break;
+                default:
+                document.getElementById("hasilAkre").innerHTML = "Rahasia hehe";
+                break;
+            }
+        }
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Typeof</p><br>`);
+
+        document.writeln(`<form id="text">
+            <input id="inputText" placeholder="Isi">
+            <button type="button" onclick="tampilTypeOf()">Submit</button>
+            </form>`);
+        document.writeln(`<p id="hasilTypeOf"></p>`)
+
+        function tampilTypeOf() {
+            let isian = document.getElementById("inputText").value;
+            const tipeIsian = typeof isian;
+            document.getElementById("hasilTypeOf").innerHTML = `<p>${tipeIsian}</p>`;
+        }
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">In Operator</p><br>`);
+
+        document.writeln("Parameter : Ronaldo, Nazario, Fenomeno");
+        const botak = {
+            // parameter
+            Ronaldo: "o",
+            Nazario: "o",
+            Fenomeno: "o"
+        };
+        document.writeln(`
+            <form id="text">
+            <input id="inputTexto" placeholder="Isi">
+            <button type="button" onclick="tampilInOperator()">Submit</button>
+            </form>
+            `);
+        document.writeln(`<p id="hasilInOperator"></p>`)
+
+        function tampilInOperator() {
+            let ision = document.getElementById("inputTexto").value;
+            const InOperator = ision in botak;
+            document.getElementById("hasilInOperator").innerHTML = `<p>${InOperator}</p>`;
+        }
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Ternary operator</p><br>`);
+        document.writeln(`
+            <form>
+            <input id="nilai" placeholder="isi nilai" type="number">
+            <button type="button" onclick="tampilTernary()">Submit</button>    
+            </form>
+        `);
+        document.writeln(`<p id="hasilTernary"></p>`)
+
+        function tampilTernary() {
+            let isiNilai = document.getElementById("nilai").value;
+            const ternaryOp = isiNilai >= 90 ? "Mantap!" :(isiNilai >=80 ? "Bagus" : (isiNilai >=70 ? "Lumayan" : "Ah sudahlah" ));
+            document.getElementById("hasilTernary").innerHTML = `<p>${ternaryOp}</p>`;
+        }
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">For loop</p><br>`);
+        document.writeln(`
+            <form>
+            <input id="loopIng" type="number" placeholder="Masukkan angka loop">
+            <button type="button" onclick="nilaiLooping()">Submit</button>
+            </form>    
+        `);
+
+        function nilaiLooping() {
+            let xx = document.getElementById("loopIng").value;
+            for (let loop = 1; loop <= xx; loop ++ ) {
+                document.writeln(`<p>Loop ke- ${loop}</p>`);
+            }
+        }
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Label</p><br>`);
+        loopx:
+        for(let l = 1; l <= 3; l ++){
+            loopy:
+            for(let r = 1; r <= 10; r++) {
+                document.writeln(`${l}, ${r}`);
+            }
+        }
+        document.writeln("<br>");
+
+        // label + continue
+        loopm:
+        for(let x = 1; x <= 3; x++) {
+            loopn:
+            for(let y = 1; y <= 5; y++) {
+                if(y > 2) {
+                    continue loopm; // kalo perulangan sudah sampe 2, langsung balik ke iterasi loopm
+                }
+                document.writeln(`${x} - ${y}`)
+            }
+        }
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">For in & of</p><br>`);
+
+        // property
+        const zidane = {
+            nama: "Zinadine",
+            nama2: "Botak",
+            nama3: "Zidane"
+        }
+
+        for (const property in zidane) {
+            document.writeln(`<p>${property} : ${zidane[property]}</p>`)
+        }
+
+        // index (array)
+        const batistuta = ["Gabriel", "Omar", "Batistuta"]
+
+        for (index in batistuta) {
+            document.writeln(`${index} : ${batistuta[index]}`);
+        }
+
+        // for of
+        for(const name of batistuta) {
+            document.writeln(`<p>${name}</p>`);
+        }
+
+        // character
+        const bat = "BATISTUTA";
+        for(const character of bat) {
+            document.writeln(`${character}`);
+        }
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Function</p>`);
+        function sederhana() {
+            document.writeln("<p>Rumah Makan Sederhana</p>")
+        }
+
+        sederhana();
+
+        function kelas(kls, hrf) {
+            document.writeln(`<p>kelas ${kls} ${hrf}</p>`)
+        }
+
+        kelas("6", "D");
+        kelas("3", "B");
+
+        function trio(cm, am, cf) {
+            const trioBelanda = document.writeln(`<p>Trio Belanda : ${cm}, ${am}, ${cf}<p>`);
+            return trioBelanda;
+        }
+
+        trio("Rijkaard", "Gullit", "Basten");
+
+        function level(lvl) {
+            if (lvl > 90) {
+                return "Zlatan";
+            } else if (lvl > 80) {
+                return "Boateng";
+            } else if (lvl > 70) {
+                return "De Sciglio";
+            } else {
+                return "Kevin Constant";
+            }
+        }
+
+        const levelnya = level(95);
+        document.writeln(`${levelnya}<br>`);
+
+        function legend(carlo, cari) {
+            for(const element of carlo) {
+                document.writeln(`<p>${element}</p>`);
+                if(element === cari) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        const carlo = ["DIDA", "ODDO", "NESTA", "MALDINI", "JANKULOVSKI", "PIRLO", "GATTUSO", "AMBROSINI", "KAKA", "SEEDORF", "F.INZAGHI"]
+        document.writeln(`<button id="milanisti" onclick="document.getElementById('milanistiImage').style.display = 'block'">Squad</button>
+            <img id="milanistiImage" src="file/milan.png" style="display: none;">
+        `)
+        document.writeln(`<form>
+            <input id="cariLegend" type="text">
+            <button type="button" onclick="cariLegends()">Submit</button><br>
+            <small>CAPSLOCK required</small>
+            </form>
+            `);
+        
+        function cariLegends() {
+            const cari = document.getElementById("cariLegend").value;
+            const hasilLegend = legend(carlo, cari);
+            document.writeln(`${hasilLegend}`);
+        }
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Rest parameter (...)</p>`);
+
+        function harga(nama, ...data) {
+            let total = 0;
+            for(const item of data){
+                total += item;
+            }
+            document.writeln(`<p>Harga ${nama} = ${total}k`);
+        }
+
+        harga("cabe", 10, 40, 50);
+        // spread syntax
+        const nils = [30,30,40,20,10,15,5];
+        harga("Array", nils); // array
+        harga("Parameter", ...nils); // parameter
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Function in parameter</p>`);
+
+        function sapa(nama) {
+            document.writeln(`<p>oi ${nama}</p>`);
+        }
+
+        const sapaDia = sapa
+        sapaDia("Jhons");
+
+        function newFriend(callback) {
+            callback("James") // valuenya di dalam fungsi
+        }
+
+        newFriend(sapaDia);
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Anonymous function</p>`);
+
+        // variabel
+        let hero = function (nama){
+            document.writeln(`<p>${nama}</p>`)
+        }
+
+        hero("Winter soldier");
+
+        // parameter
+        function julukan(callback) {
+            callback("Badang")
+        }
+
+        julukan(function(nama){
+            document.writeln(`<p>${nama}</p>`);
+        });
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Nested function</p>`);
+
+        function outer() {
+            function inner() {
+                document.writeln("<p>Fungsi Inner</p>");
+            }
+            inner();
+        }
+
+        outer();
+        // inner(); // not defined
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Scope</p>`);
+
+        // global scope
+        let kembar = 2;
+
+        // function = global scope
+        function nambah() {
+            // local scope
+            let anakKembar = 2;
+            kembar++;
+        }
+
+        nambah();
+        document.writeln(kembar);
+        // document.writeln(anakKembar); // not defined
+
+        // scope in nested
+        function sulung() {
+            let siSulung = "PERDANA";
+            function kelamin() {
+                document.writeln(siSulung);
+                const jk = "LAKI-LAKI";
+            }
+
+            kelamin();
+            document.writeln(jk);
+        }
+
+        sulung();
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Recursive function</p>`);
+
+        function recursive(value){
+            if(value === 1){
+                return 1;
+            } else {
+                return value * recursive(value-1);
+            }
+        }
+
+        document.writeln(recursive(5));
+        document.writeln(5*4*3*2*1);
+        document.writeln(recursive(6));
+        document.writeln(6*5*4*3*2*1);
+    </script>
+
+    <script>
+       document.writeln(`<p class="judul">Function generator (*)</p>`);
+       
+       function* semua(){
+        yield "Toni";
+        yield "Maestro";
+        yield "Kroos";
+       }
+
+       const gabungan = semua();
+       for(gabung of gabungan){
+        document.writeln(gabung);
+       }
+
+       function* ganjilAja(value){
+        for(let i=1; i<=value; i++){
+            if(i % 2 === 1){
+                yield i;
+            }
+        }
+       }
+
+       const siGanjil = ganjilAja(10);
+       for(ganjil of siGanjil){
+        document.writeln(ganjil);
+       }
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">EAGER & LAZY</p>`);
+        
+        document.writeln("<p>EAGER</p>");
+        function angkaGenap(value){
+            const angkaGenap = []
+            for(let i=1; i<=value; i++){
+                if(i % 2 === 0){
+                    document.writeln(`yield ${i}`)
+                    // cek console
+                    console.log(`yield ${i}`)
+                    angkaGenap.push(i);
+                }
+            }
+            return angkaGenap;
+        }
+
+        const siGenap = angkaGenap(10);
+        for(genap of siGenap){
+            document.writeln(genap);
+            // cek console
+            console.log(genap);
+        }
+
+        document.writeln("<p>LAZY</p>");
+        function* angkaGanjil(value){
+            for(let i=1; i<=value; i++){
+                if(i % 2 === 0){
+                    document.writeln(`Yield ${i}`);
+                    // cek console
+                    // console.log(`Yield ${i}`);
+                    yield i;
+                }
+            }
+        }
+
+        const nomorr = angkaGanjil(10);
+        // for (const number of nomorr) {
+        //     document.writeln(number)
+        // }
+        document.writeln(nomorr.next().value)
+        document.writeln(nomorr.next().value)
+        document.writeln(nomorr.next().value)
+        // cek console
+        // console.log(nomorr.next().value)
+        // console.log(nomorr.next().value)
+        // console.log(nomorr.next().value)
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Arrow function</p>`);
+
+        // with block
+        const sapaBabang = (nama) => {
+            const hoi = `<p>Halo babang ${nama}</p>`;
+            document.writeln(hoi);
+        }
+        sapaBabang("Broker");
+
+        const hitungIn = (first, second) => {
+            return first*second
+        }
+        console.log(hitungIn(10,5))
+
+        // without block
+        const sapaBro = (nama) => document.writeln(`<p>Halo bro ${nama}</p>`)
+        sapaBro("Darto")
+
+        const hitungKan = (first, second) => first/second
+        console.log(hitungKan(100,5))
+
+        // 1 parameter
+        const sapaMbak = nama => document.writeln(`<p>Halo mbak ${nama}</p>`)
+        sapaMbak("Raisa")
+
+        // anon function version
+        function julukin(callback) {
+            callback("Corazon")
+        }
+
+        julukin(nama => document.writeln(`He is ${nama}`))
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Closure</p>`);
+
+        function kaliPertama(value){
+            const founder = "Broker";
+
+            function add(param){
+                document.writeln(founder);
+                return value*param
+            }
+
+            return add
+        }
+
+        // closure
+        const addTwo = kaliPertama(3);
+        document.writeln(addTwo(10));
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Object method</p>`);
+
+        const dokter = {
+            nama : "Boyke",
+        }
+
+        dokter.sapa = function (nama){
+            document.writeln(`Halo dokter ${nama}`)
+        }
+        dokter.sapa("Hiluluk")
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">this</p>`);
+
+        // window
+        console.info(this)
+
+        function cekThis(){
+            console.info(this)
+
+            function thisInner(){
+                console.info(this)
+            }
+
+            thisInner()
+        }
+        cekThis()
+
+        // this in object method
+        const driver = {
+            nama: "Pato",
+            lokasi: "Bandung",
+            hallo: function(nama, lokasi){
+                console.info(this) // show properti & function of driver
+                document.writeln(`Halo ${nama}, antar saya ke ${lokasi}`)
+            }
+        }
+        driver.hallo("Serginho", "Milan")
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Arrow function in object</p>`);
+
+        const st = {
+            name: "Inzaghi",
+            halo: (name) => {
+                console.info(this) // window
+                document.writeln(`Halo ${name}`)
+            }
+        }
+        st.halo("Perd")
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Getter & Setter</p>`);
+        document.writeln("view in console<br>");
+
+        const pinLocation = {
+            lat: 0,
+            lang: 0,
+
+            // get
+            get pin(){
+                return `${this.lat}, ${this.lang}`
+            },
+
+            // set
+            set pin(value){
+                const array = value.split(" ")
+                this.lat = array[0]
+                this.lang = array[1]
+            }
+        }
+
+        pinLocation.pin = "10000 20000"
+        console.table(pinLocation)
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Destructuring</p>`);
+
+        const acm = ["Dida", "Cafu", "Stam", "Nesta", "Maldini", "Pirlo", "Gattuso", "Seedorf"]
+
+        const [gk, rb, cb, ...others] = acm
+
+        document.writeln(`<p>${gk}<\p>`)
+        document.writeln(`<p>${rb}<\p>`)
+        document.writeln(`<p>${cb}<\p>`)
+        document.writeln(`<p>${others}<\p>`) // array
+        // cek console
+        console.log(others)
+
+        // put array with destructuring
+        const rm = {
+            nama: "Real Madrid",
+            stadion: "Bernabeu",
+            players: {
+                kip: "Casillas",
+                bek: "Ramos",
+                gel: "Alonso",
+                pen: "Ronaldo"
+            },
+            fans: "Madridista",
+            negara: "Spanyol"
+        }
+
+        let {nama, stadion, players: {kip, bek, gel, pen}, ...other} = rm
+        document.writeln(`<p>${nama}</p>`)
+        document.writeln(`<p>${stadion}</p>`)
+        // document.writeln(`<p>${players}</p>`) // referrence error
+        document.writeln(`<p>${kip}</p>`)
+        document.writeln(`<p>${other}</p>`) // object
+        // cek console
+        console.log(other)
+        
+        // Destructuring in function parameter
+        function gelandang({depan, tengah, belakang}){
+            document.writeln(depan)
+            document.writeln(tengah)
+            document.writeln(belakang)
+        }
+
+        const paul = {
+            depan: "Paul",
+            tengah: "Uban",
+            belakang: "Scholes <br>"
+        }
+
+        gelandang(paul)
+
+        // Array
+        function ngitung([satu, dua]){
+            return satu * dua
+        }
+        const dariNgitung = ngitung([10,3])
+        document.writeln(dariNgitung)
+        document.writeln("<br>")
+
+        // make a default value
+        const mu = ["Van der sar", "Vidic"]
+        const [goalie, def, center="Park"] = mu
+
+        document.writeln(goalie)
+        document.writeln(def)
+        document.writeln(center)
+
+        // change variable name
+        const dortmund = {
+            coach: "Klopp",
+            star: "Gotze"
+        }
+
+        let {
+            coach: pelatih = "Jurgen",
+            star: bintang
+        } = dortmund
+
+        document.writeln(pelatih)
+        document.writeln(bintang)
+    </script>
+
+    <script>
+        document.writeln(`<p class="judul">Strict</p>`);
+
+        function strictMode(){
+            'use strict';
+            const presidente = {
+                name: "Berlusconi"
+            }
+
+            // with (not recommended)
+            // with (presidente){
+            //     console.info(name)
+            // }
+        }
+        strictMode() // error because not allowed
+    </script>
+    
+    <script>
+        document.writeln(`<p class="judul">Debugger</p>`);
+        document.writeln("<p>view in console</p>");
+
+        function menghitung(...angkaaa){
+            debugger;
+            let total = 0
+            for (const nomor of angkaaa){
+                total = nomor
+            }
+            return total
+        }
+
+        console.info(menghitung(3,3,3))
+    </script>
 </body>
 </html>

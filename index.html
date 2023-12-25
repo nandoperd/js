@@ -225,7 +225,7 @@ I am from Indonesia`;
 
         document.writeln(`<p> ${parseInt("1.1")} </p>`); // string ke number (bilanngan bulat)
         document.writeln(`<p> ${parseFloat("1.1")} </p>`);  // string ke float
-        document.writeln(`<p> ${Number("1.1")} </p>`); // string ke nnumber (bulat/float)
+        document.writeln(`<p> ${Number("1.1")} </p>`); // string ke number (bulat/float)
 
         const hasil = a.toString() + b.toString(); // number ke string
         document.writeln(`<p> ${hasil} </p>`); // 11 (string)
@@ -658,7 +658,7 @@ I am from Indonesia`;
         // menghentikan eksekusi menggunakan return
         function adakah(nilai, cari) {
             for(const element of nilai) {
-                console.info(`Iterasi element ${element}`); // cek perulangan ketika distop
+                document.writeln(`Iterasi element ${element}`); // cek perulangan ketika distop
                 if(element === cari) {
                     return true;
                 }
@@ -1126,7 +1126,7 @@ I am from Indonesia`;
 
     <script>
         document.writeln("Destructuring <br>");
-        // Destructuring digunakan untuk membongkar nilai/valu pada sebuah array/object ke dalam variabel
+        // Destructuring digunakan untuk membongkar nilai/value pada sebuah array/object ke dalam variabel
 
         // contoh destructuring
         const panggilan = ["Broker", "Selundupan", "Bedebah", "NoN", "Letto"];
@@ -1259,6 +1259,7 @@ I am from Indonesia`;
 
     <script>
         document.writeln("--- SELESAI --- <br>");
+        document.writeln(`<a target="blank" href="https://github.com/ProgrammerZamanNow/belajar-javascript-dasar">Repository</a>`)
         document.writeln("Credits : Programmer Zaman Now <br>");
         document.writeln(`<a target="blank" href="https://github.com/ProgrammerZamanNow/belajar-javascript-dasar">Repository</a>`)
     </script>
